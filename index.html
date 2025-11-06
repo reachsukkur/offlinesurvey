@@ -12,12 +12,15 @@
 <body>
     <div class="container">
         <header>
-            <h1>📝 Survey Builder</h1>
+            <h1 data-i18n="surveyBuilder">📝 Survey Builder</h1>
             <nav>
-                <a href="index.html" class="active">Builder</a>
-                <a href="kiosk.html">Kiosk Mode</a>
-                <a href="analytics.html">Analytics</a>
-                <button id="masterPasswordBtn" class="btn btn-secondary" style="margin-left: auto;">🔐 Master Password</button>
+                <a href="index.html" class="active" data-i18n="surveyBuilder">Builder</a>
+                <a href="kiosk.html" data-i18n="kioskMode">Kiosk Mode</a>
+                <a href="analytics.html" data-i18n="analytics">Analytics</a>
+                <button id="masterPasswordBtn" class="btn btn-secondary" style="margin-left: auto;">
+                    <span data-i18n="masterPassword">🔐 Master Password</span>
+                </button>
+                <div id="languageToggleContainer"></div>
             </nav>
         </header>
 
@@ -99,7 +102,21 @@
         </main>
     </div>
 
+    <script src="js/language.js"></script>
     <script src="js/storage.js"></script>
     <script src="js/builder.js"></script>
+    <script>
+        // Initialize language toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('languageToggleContainer');
+            container.innerHTML = LanguageManager.createToggleHTML();
+            
+            const toggle = document.getElementById('languageToggle');
+            toggle.addEventListener('change', (e) => {
+                const newLang = e.target.checked ? 'ar' : 'en';
+                LanguageManager.setLanguage(newLang);
+            });
+        });
+    </script>
 </body>
 </html>

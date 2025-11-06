@@ -12,8 +12,11 @@
 <body class="kiosk-mode">
     <div class="container">
         <header class="kiosk-header">
-            <h1>📋 Survey Station</h1>
-            <a href="#" id="adminLink" class="admin-link">Admin</a>
+            <h1 data-i18n="surveyStation">📋 Survey Station</h1>
+            <div style="display: flex; gap: 15px; align-items: center;">
+                <div id="languageToggleContainer"></div>
+                <a href="#" id="adminLink" class="admin-link" data-i18n="admin">Admin</a>
+            </div>
         </header>
 
         <main>
@@ -60,7 +63,21 @@
         </main>
     </div>
 
+    <script src="js/language.js"></script>
     <script src="js/storage.js"></script>
     <script src="js/kiosk.js"></script>
+    <script>
+        // Initialize language toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('languageToggleContainer');
+            container.innerHTML = LanguageManager.createToggleHTML();
+            
+            const toggle = document.getElementById('languageToggle');
+            toggle.addEventListener('change', (e) => {
+                const newLang = e.target.checked ? 'ar' : 'en';
+                LanguageManager.setLanguage(newLang);
+            });
+        });
+    </script>
 </body>
 </html>

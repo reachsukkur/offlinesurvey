@@ -13,11 +13,12 @@
 <body>
     <div class="container">
         <header>
-            <h1>📊 Analytics Dashboard</h1>
+            <h1 data-i18n="analytics">📊 Analytics Dashboard</h1>
             <nav>
-                <a href="index.html">Builder</a>
-                <a href="kiosk.html">Kiosk Mode</a>
-                <a href="analytics.html" class="active">Analytics</a>
+                <a href="index.html" data-i18n="surveyBuilder">Builder</a>
+                <a href="kiosk.html" data-i18n="kioskMode">Kiosk Mode</a>
+                <a href="analytics.html" class="active" data-i18n="analytics">Analytics</a>
+                <div id="languageToggleContainer"></div>
             </nav>
         </header>
 
@@ -86,8 +87,22 @@
         </main>
     </div>
 
+    <script src="js/language.js"></script>
     <script src="js/storage.js"></script>
     <script src="js/export.js"></script>
     <script src="js/analytics.js"></script>
+    <script>
+        // Initialize language toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('languageToggleContainer');
+            container.innerHTML = LanguageManager.createToggleHTML();
+            
+            const toggle = document.getElementById('languageToggle');
+            toggle.addEventListener('change', (e) => {
+                const newLang = e.target.checked ? 'ar' : 'en';
+                LanguageManager.setLanguage(newLang);
+            });
+        });
+    </script>
 </body>
 </html>

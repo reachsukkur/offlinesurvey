@@ -294,7 +294,7 @@ Edit CSS variables in `css/main.css`:
 1. Push code to GitHub repository
 2. Go to Settings > Pages
 3. Select branch and folder
-4. Access via `https://yourusername.github.io/offlinesurvey/`
+4. Access via `https://reachsukkur.github.io/offlinesurvey/`
 
 ### Local Server
 ```bash
