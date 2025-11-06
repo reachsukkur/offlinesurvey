@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Survey Builder - Offline Survey App</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/builder.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 Survey Builder</h1>
+            <nav>
+                <a href="index.html" class="active">Builder</a>
+                <a href="kiosk.html">Kiosk Mode</a>
+                <a href="analytics.html">Analytics</a>
+                <button id="masterPasswordBtn" class="btn btn-secondary" style="margin-left: auto;">🔐 Master Password</button>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Survey List View -->
+            <div id="surveyListView" class="view active">
+                <div class="toolbar">
+                    <button id="createSurveyBtn" class="btn btn-primary">+ Create New Survey</button>
+                </div>
+                
+                <!-- Kiosk Mode Survey Selection -->
+                <div class="kiosk-selection-card">
+                    <h3>📱 Kiosk Mode Settings</h3>
+                    <p>Select which survey should run in kiosk mode:</p>
+                    <div class="kiosk-controls">
+                        <select id="kioskSurveySelector" class="kiosk-survey-selector">
+                            <option value="">-- No Survey Selected --</option>
+                        </select>
+                        <button id="setKioskSurveyBtn" class="btn btn-primary">Set as Kiosk Survey</button>
+                        <button id="clearKioskSurveyBtn" class="btn btn-secondary">Clear Selection</button>
+                    </div>
+                    <div id="kioskSurveyStatus" class="kiosk-status"></div>
+                </div>
+                
+                <div id="surveyList" class="survey-list">
+                    <!-- Survey items will be dynamically added here -->
+                </div>
+            </div>
+
+            <!-- Survey Editor View -->
+            <div id="surveyEditorView" class="view">
+                <div class="toolbar">
+                    <button id="backToListBtn" class="btn btn-secondary">← Back to List</button>
+                    <button id="saveSurveyBtn" class="btn btn-primary">💾 Save Survey</button>
+                    <button id="deleteSurveyBtn" class="btn btn-danger">🗑️ Delete Survey</button>
+                </div>
+
+                <div class="editor-container">
+                    <div class="survey-header">
+                        <div class="form-group">
+                            <label for="surveyTitle">Survey Title *</label>
+                            <input type="text" id="surveyTitle" placeholder="Enter survey title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="surveyDescription">Description</label>
+                            <textarea id="surveyDescription" placeholder="Enter survey description" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="surveyPassword">Survey Password (optional)</label>
+                            <input type="password" id="surveyPassword" placeholder="Set password for kiosk admin access">
+                            <small style="color: #8E8E93;">This password (or master password) will be required to exit kiosk mode to admin</small>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" id="surveyPublished">
+                                Published (visible in Kiosk Mode)
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="questions-section">
+                        <h2>Questions</h2>
+                        <div class="question-types">
+                            <button class="btn btn-question" data-type="text">📝 Text</button>
+                            <button class="btn btn-question" data-type="textarea">📄 Long Text</button>
+                            <button class="btn btn-question" data-type="multipleChoice">☑️ Multiple Choice</button>
+                            <button class="btn btn-question" data-type="checkbox">✅ Checkboxes</button>
+                            <button class="btn btn-question" data-type="rating">⭐ Rating</button>
+                            <button class="btn btn-question" data-type="yesNo">👍 Yes/No</button>
+                            <button class="btn btn-question" data-type="date">📅 Date</button>
+                        </div>
+
+                        <div id="questionsList" class="questions-list">
+                            <!-- Questions will be dynamically added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/builder.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Kiosk Mode - Offline Survey App</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/kiosk.css">
+</head>
+<body class="kiosk-mode">
+    <div class="container">
+        <header class="kiosk-header">
+            <h1>📋 Survey Station</h1>
+            <a href="#" id="adminLink" class="admin-link">Admin</a>
+        </header>
+
+        <main>
+            <!-- Survey Selection View -->
+            <div id="surveySelectionView" class="view active">
+                <div class="welcome-card">
+                    <h2>Welcome!</h2>
+                    <p>Please select a survey to begin:</p>
+                    <select id="surveySelector" class="survey-selector">
+                        <option value="">-- Select a Survey --</option>
+                    </select>
+                    <button id="startSurveyBtn" class="btn btn-primary btn-large" disabled>Start Survey →</button>
+                </div>
+            </div>
+
+            <!-- Survey Form View -->
+            <div id="surveyFormView" class="view">
+                <div class="survey-info">
+                    <h2 id="surveyTitleDisplay"></h2>
+                    <p id="surveyDescriptionDisplay"></p>
+                </div>
+
+                <form id="surveyForm" class="survey-form">
+                    <div id="formQuestions">
+                        <!-- Questions will be dynamically rendered here -->
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" id="cancelFormBtn" class="btn btn-secondary">Cancel</button>
+                        <button type="submit" class="btn btn-primary btn-large">Submit Survey</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Thank You View -->
+            <div id="thankYouView" class="view">
+                <div class="thank-you-card">
+                    <div class="success-icon">✓</div>
+                    <h2>Thank You!</h2>
+                    <p>Your response has been recorded successfully.</p>
+                    <p class="countdown">Loading next survey in <span id="countdown">5</span> seconds...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/kiosk.js"></script>
+</body>
+</html>

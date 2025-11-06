@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مثال باللغة العربية - Arabic Demo</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/kiosk.css">
+    <style>
+        .demo-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+        .demo-title {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+        .demo-section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background: var(--bg-color);
+            border-radius: 15px;
+        }
+        .demo-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .language-toggle {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .info-box {
+            background: #E3F2FD;
+            padding: 20px;
+            border-radius: 10px;
+            border-right: 4px solid var(--primary-color);
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌍 Arabic Language Demo / عرض توضيحي للغة العربية</h1>
+            <nav>
+                <a href="index.html">Builder / المنشئ</a>
+                <a href="kiosk.html">Kiosk / الكشك</a>
+                <a href="analytics.html">Analytics / التحليلات</a>
+            </nav>
+        </header>
+
+        <div class="demo-container">
+            <h2 class="demo-title">استبيان رضا العملاء</h2>
+
+            <div class="info-box">
+                <p><strong>ℹ️ معلومة:</strong> هذه صفحة توضيحية تُظهر كيف يبدو التطبيق باللغة العربية</p>
+                <p><strong>ℹ️ Info:</strong> This is a demo page showing how the app looks in Arabic</p>
+            </div>
+
+            <div class="demo-section">
+                <h3>١. نص عادي / Regular Text</h3>
+                <p>مرحباً بك في تطبيق الاستبيانات الإلكترونية. هذا التطبيق يدعم اللغة العربية بالكامل مع محاذاة صحيحة من اليمين لليسار.</p>
+                <p>Welcome to the survey app. This app fully supports Arabic language with proper right-to-left alignment.</p>
+            </div>
+
+            <div class="demo-section">
+                <h3>٢. أسئلة الاختيار المتعدد / Multiple Choice</h3>
+                <div class="form-question">
+                    <label class="question-label">كيف تقيم الخدمة؟ <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="q1" value="ممتاز">
+                            <span>ممتاز</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="q1" value="جيد جداً">
+                            <span>جيد جداً</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="q1" value="جيد">
+                            <span>جيد</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="q1" value="مقبول">
+                            <span>مقبول</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h3>٣. مقياس التقييم / Rating Scale</h3>
+                <div class="form-question">
+                    <label class="question-label">قيّم تجربتك من 1 إلى 5</label>
+                    <div class="rating-group">
+                        <label class="rating-label">
+                            <input type="radio" name="rating" value="1">
+                            <span class="rating-number">١</span>
+                        </label>
+                        <label class="rating-label">
+                            <input type="radio" name="rating" value="2">
+                            <span class="rating-number">٢</span>
+                        </label>
+                        <label class="rating-label">
+                            <input type="radio" name="rating" value="3">
+                            <span class="rating-number">٣</span>
+                        </label>
+                        <label class="rating-label">
+                            <input type="radio" name="rating" value="4">
+                            <span class="rating-number">٤</span>
+                        </label>
+                        <label class="rating-label">
+                            <input type="radio" name="rating" value="5">
+                            <span class="rating-number">٥</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h3>٤. خانات الاختيار / Checkboxes</h3>
+                <div class="form-question">
+                    <label class="question-label">ما هي الخدمات التي استخدمتها؟</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="services" value="استشارات">
+                            <span>الاستشارات</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="services" value="دعم">
+                            <span>الدعم الفني</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="services" value="تدريب">
+                            <span>التدريب</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h3>٥. حقول النص / Text Fields</h3>
+                <div class="form-question">
+                    <label class="question-label">ما هو اسمك؟</label>
+                    <input type="text" class="form-input" placeholder="أدخل اسمك هنا">
+                </div>
+                <div class="form-question">
+                    <label class="question-label">اقتراحات إضافية:</label>
+                    <textarea class="form-textarea" rows="4" placeholder="اكتب اقتراحاتك هنا..."></textarea>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h3>٦. نعم / لا / Yes / No</h3>
+                <div class="form-question">
+                    <label class="question-label">هل توصي بخدماتنا؟</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="recommend" value="نعم">
+                            <span>👍 نعم</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="recommend" value="لا">
+                            <span>👎 لا</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="language-toggle">
+                <button class="btn btn-primary btn-large" onclick="toggleLanguage()">
+                    🔄 Switch to English / التبديل إلى الإنجليزية
+                </button>
+            </div>
+
+            <div class="info-box">
+                <h4>✨ المزايا / Features:</h4>
+                <ul style="text-align: right;">
+                    <li>دعم كامل للغة العربية ✅</li>
+                    <li>محاذاة من اليمين لليسار (RTL) ✅</li>
+                    <li>يدعم جميع أنواع الأسئلة ✅</li>
+                    <li>التصدير بصيغة CSV و JSON ✅</li>
+                    <li>يعمل بدون اتصال إنترنت ✅</li>
+                    <li>محسّن لأجهزة iPad ✅</li>
+                </ul>
+            </div>
+
+            <div class="form-actions">
+                <a href="index.html" class="btn btn-primary">ابدأ الآن / Get Started</a>
+                <a href="ARABIC_SUPPORT.md" class="btn btn-secondary">دليل الاستخدام / User Guide</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleLanguage() {
+            const currentDir = document.documentElement.getAttribute('dir');
+            const currentLang = document.documentElement.getAttribute('lang');
+            
+            if (currentDir === 'rtl') {
+                document.documentElement.setAttribute('dir', 'ltr');
+                document.documentElement.setAttribute('lang', 'en');
+                alert('Switched to English (LTR mode)');
+            } else {
+                document.documentElement.setAttribute('dir', 'rtl');
+                document.documentElement.setAttribute('lang', 'ar');
+                alert('تم التبديل إلى العربية (وضع RTL)');
+            }
+        }
+    </script>
+</body>
+</html>
