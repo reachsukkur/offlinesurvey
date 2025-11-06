@@ -28,19 +28,25 @@
             <!-- Survey List View -->
             <div id="surveyListView" class="view active">
                 <div class="toolbar">
-                    <button id="createSurveyBtn" class="btn btn-primary">+ Create New Survey</button>
+                    <button id="createSurveyBtn" class="btn btn-primary">
+                        + <span data-i18n="createNewSurvey">Create New Survey</span>
+                    </button>
                 </div>
                 
                 <!-- Kiosk Mode Survey Selection -->
                 <div class="kiosk-selection-card">
-                    <h3>📱 Kiosk Mode Settings</h3>
-                    <p>Select which survey should run in kiosk mode:</p>
+                    <h3>📱 <span data-i18n="kioskSettings">Kiosk Mode Settings</span></h3>
+                    <p data-i18n="selectKioskSurvey">Select which survey should run in kiosk mode:</p>
                     <div class="kiosk-controls">
                         <select id="kioskSurveySelector" class="kiosk-survey-selector">
                             <option value="">-- No Survey Selected --</option>
                         </select>
-                        <button id="setKioskSurveyBtn" class="btn btn-primary">Set as Kiosk Survey</button>
-                        <button id="clearKioskSurveyBtn" class="btn btn-secondary">Clear Selection</button>
+                        <button id="setKioskSurveyBtn" class="btn btn-primary">
+                            <span data-i18n="setKioskSurvey">Set as Kiosk Survey</span>
+                        </button>
+                        <button id="clearKioskSurveyBtn" class="btn btn-secondary">
+                            <span data-i18n="clearSelection">Clear Selection</span>
+                        </button>
                     </div>
                     <div id="kioskSurveyStatus" class="kiosk-status"></div>
                 </div>
@@ -53,44 +59,64 @@
             <!-- Survey Editor View -->
             <div id="surveyEditorView" class="view">
                 <div class="toolbar">
-                    <button id="backToListBtn" class="btn btn-secondary">← Back to List</button>
-                    <button id="saveSurveyBtn" class="btn btn-primary">💾 Save Survey</button>
-                    <button id="deleteSurveyBtn" class="btn btn-danger">🗑️ Delete Survey</button>
+                    <button id="backToListBtn" class="btn btn-secondary">
+                        ← <span data-i18n="back">Back to List</span>
+                    </button>
+                    <button id="saveSurveyBtn" class="btn btn-primary">
+                        💾 <span data-i18n="saveSurvey">Save Survey</span>
+                    </button>
+                    <button id="deleteSurveyBtn" class="btn btn-danger">
+                        🗑️ <span data-i18n="deleteSurvey">Delete Survey</span>
+                    </button>
                 </div>
 
                 <div class="editor-container">
                     <div class="survey-header">
                         <div class="form-group">
-                            <label for="surveyTitle">Survey Title *</label>
-                            <input type="text" id="surveyTitle" placeholder="Enter survey title" required>
+                            <label for="surveyTitle" data-i18n="surveyTitle">Survey Title *</label>
+                            <input type="text" id="surveyTitle" data-i18n-placeholder="surveyTitle" placeholder="Enter survey title" required>
                         </div>
                         <div class="form-group">
-                            <label for="surveyDescription">Description</label>
-                            <textarea id="surveyDescription" placeholder="Enter survey description" rows="3"></textarea>
+                            <label for="surveyDescription" data-i18n="surveyDescription">Description</label>
+                            <textarea id="surveyDescription" data-i18n-placeholder="surveyDescription" placeholder="Enter survey description" rows="3"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="surveyPassword">Survey Password (optional)</label>
-                            <input type="password" id="surveyPassword" placeholder="Set password for kiosk admin access">
-                            <small style="color: #8E8E93;">This password (or master password) will be required to exit kiosk mode to admin</small>
+                            <label for="surveyPassword" data-i18n="password">Survey Password (optional)</label>
+                            <input type="password" id="surveyPassword" data-i18n-placeholder="passwordPlaceholder" placeholder="Set password for kiosk admin access">
+                            <small style="color: #8E8E93;" data-i18n="passwordHelp">This password (or master password) will be required to exit kiosk mode to admin</small>
                         </div>
                         <div class="form-group">
                             <label>
                                 <input type="checkbox" id="surveyPublished">
-                                Published (visible in Kiosk Mode)
+                                <span data-i18n="publishedVisibleInKiosk">Published (visible in Kiosk Mode)</span>
                             </label>
                         </div>
                     </div>
 
                     <div class="questions-section">
-                        <h2>Questions</h2>
+                        <h2 data-i18n="questions">Questions</h2>
                         <div class="question-types">
-                            <button class="btn btn-question" data-type="text">📝 Text</button>
-                            <button class="btn btn-question" data-type="textarea">📄 Long Text</button>
-                            <button class="btn btn-question" data-type="multipleChoice">☑️ Multiple Choice</button>
-                            <button class="btn btn-question" data-type="checkbox">✅ Checkboxes</button>
-                            <button class="btn btn-question" data-type="rating">⭐ Rating</button>
-                            <button class="btn btn-question" data-type="yesNo">👍 Yes/No</button>
-                            <button class="btn btn-question" data-type="date">📅 Date</button>
+                            <button class="btn btn-question" data-type="text">
+                                📝 <span data-i18n="textQuestion">Text</span>
+                            </button>
+                            <button class="btn btn-question" data-type="textarea">
+                                📄 <span data-i18n="textareaQuestion">Long Text</span>
+                            </button>
+                            <button class="btn btn-question" data-type="multipleChoice">
+                                ☑️ <span data-i18n="multipleChoice">Multiple Choice</span>
+                            </button>
+                            <button class="btn btn-question" data-type="checkbox">
+                                ✅ <span data-i18n="checkboxes">Checkboxes</span>
+                            </button>
+                            <button class="btn btn-question" data-type="rating">
+                                ⭐ <span data-i18n="rating">Rating</span>
+                            </button>
+                            <button class="btn btn-question" data-type="yesNo">
+                                👍 <span data-i18n="yesNo">Yes/No</span>
+                            </button>
+                            <button class="btn btn-question" data-type="date">
+                                📅 <span data-i18n="dateQuestion">Date</span>
+                            </button>
                         </div>
 
                         <div id="questionsList" class="questions-list">

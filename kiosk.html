@@ -23,12 +23,14 @@
             <!-- Survey Selection View -->
             <div id="surveySelectionView" class="view active">
                 <div class="welcome-card">
-                    <h2>Welcome!</h2>
-                    <p>Please select a survey to begin:</p>
+                    <h2 data-i18n="welcome">Welcome!</h2>
+                    <p data-i18n="selectSurvey">Please select a survey to begin:</p>
                     <select id="surveySelector" class="survey-selector">
                         <option value="">-- Select a Survey --</option>
                     </select>
-                    <button id="startSurveyBtn" class="btn btn-primary btn-large" disabled>Start Survey →</button>
+                    <button id="startSurveyBtn" class="btn btn-primary btn-large" disabled>
+                        <span data-i18n="startSurvey">Start Survey</span> →
+                    </button>
                 </div>
             </div>
 
@@ -45,8 +47,12 @@
                     </div>
 
                     <div class="form-actions">
-                        <button type="button" id="cancelFormBtn" class="btn btn-secondary">Cancel</button>
-                        <button type="submit" class="btn btn-primary btn-large">Submit Survey</button>
+                        <button type="button" id="cancelFormBtn" class="btn btn-secondary">
+                            <span data-i18n="restart">Restart</span>
+                        </button>
+                        <button type="submit" class="btn btn-primary btn-large">
+                            <span data-i18n="submitSurvey">Submit Survey</span>
+                        </button>
                     </div>
                 </form>
             </div>
@@ -55,9 +61,13 @@
             <div id="thankYouView" class="view">
                 <div class="thank-you-card">
                     <div class="success-icon">✓</div>
-                    <h2>Thank You!</h2>
-                    <p>Your response has been recorded successfully.</p>
-                    <p class="countdown">Loading next survey in <span id="countdown">5</span> seconds...</p>
+                    <h2 data-i18n="thankYou">Thank You!</h2>
+                    <p data-i18n="responseRecorded">Your response has been recorded successfully.</p>
+                    <p class="countdown">
+                        <span data-i18n="loadingNext">Loading next survey in</span>
+                        <span id="countdown">5</span>
+                        <span data-i18n="seconds">seconds...</span>
+                    </p>
                 </div>
             </div>
         </main>

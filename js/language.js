@@ -1,7 +1,7 @@
 // Language Manager
 const LanguageManager = {
     currentLang: localStorage.getItem('appLanguage') || 'en',
-    
+
     translations: {
         en: {
             // Common
@@ -13,7 +13,7 @@ const LanguageManager = {
             back: 'Back',
             yes: 'Yes',
             no: 'No',
-            
+
             // Survey Builder
             surveyBuilder: 'Survey Builder',
             createNewSurvey: 'Create New Survey',
@@ -21,19 +21,29 @@ const LanguageManager = {
             surveyDescription: 'Survey Description',
             published: 'Published',
             unpublished: 'Unpublished',
+            draft: 'Draft',
             password: 'Password',
+            passwordPlaceholder: 'Set password for kiosk admin access',
+            passwordHelp: 'This password (or master password) will be required to exit kiosk mode to admin',
+            publishedVisibleInKiosk: 'Published (visible in Kiosk Mode)',
             masterPassword: 'Master Password',
             saveSurvey: 'Save Survey',
             deleteSurvey: 'Delete Survey',
             duplicateSurvey: 'Duplicate',
+            edit: 'Edit',
             questions: 'Questions',
             addQuestion: 'Add Question',
             questionText: 'Question Text',
+            enterQuestion: 'Enter your question',
             required: 'Required',
             optional: 'Optional',
             options: 'Options',
             addOption: 'Add Option',
-            
+            ratingScale: 'Rating Scale',
+            moveUp: 'Move Up',
+            moveDown: 'Move Down',
+            removeQuestion: 'Remove Question',
+
             // Question Types
             textQuestion: 'Text',
             textareaQuestion: 'Long Text',
@@ -42,7 +52,7 @@ const LanguageManager = {
             rating: 'Rating',
             yesNo: 'Yes/No',
             dateQuestion: 'Date',
-            
+
             // Kiosk Mode
             kioskMode: 'Kiosk Mode',
             surveyStation: 'Survey Station',
@@ -56,25 +66,33 @@ const LanguageManager = {
             seconds: 'seconds...',
             admin: 'Admin',
             restart: 'Restart',
-            
+
             // Kiosk Settings
             kioskSettings: 'Kiosk Mode Settings',
             selectKioskSurvey: 'Select which survey should run in kiosk mode:',
             setKioskSurvey: 'Set as Kiosk Survey',
             clearSelection: 'Clear Selection',
             kioskSetTo: 'Kiosk mode is set to:',
-            
+
             // Analytics
             analytics: 'Analytics Dashboard',
             selectSurveyToView: 'Select a survey to view responses',
             totalResponses: 'Total Responses',
+            firstResponse: 'First Response',
+            latestResponse: 'Latest Response',
+            completionRate: 'Completion Rate',
+            responseCharts: 'Response Charts',
+            individualResponses: 'Individual Responses',
             viewResponses: 'View Responses',
             exportCSV: 'Export to CSV',
             exportJSON: 'Export to JSON',
+            clearAllResponses: 'Clear All Responses',
             noResponses: 'No responses yet',
             responseDetails: 'Response Details',
             submittedAt: 'Submitted At',
-            
+            filter: 'Filter',
+            clearFilter: 'Clear Filter',
+
             // Messages
             confirmDelete: 'Are you sure you want to delete this survey? This will also delete all responses.',
             confirmCancel: 'Are you sure you want to restart the form?',
@@ -88,7 +106,7 @@ const LanguageManager = {
             kioskSurveySet: 'Kiosk survey set successfully! The kiosk mode will now use this survey.',
             kioskSurveyCleared: 'Kiosk survey cleared successfully!',
         },
-        
+
         ar: {
             // Common
             loading: 'جاري التحميل...',
@@ -99,7 +117,7 @@ const LanguageManager = {
             back: 'رجوع',
             yes: 'نعم',
             no: 'لا',
-            
+
             // Survey Builder
             surveyBuilder: 'منشئ الاستبيان',
             createNewSurvey: 'إنشاء استبيان جديد',
@@ -107,19 +125,31 @@ const LanguageManager = {
             surveyDescription: 'وصف الاستبيان',
             published: 'منشور',
             unpublished: 'غير منشور',
+            draft: 'مسودة',
             password: 'كلمة المرور',
+            passwordPlaceholder: 'تعيين كلمة مرور للوصول إلى الإدارة من وضع الكشك',
+            passwordHelp: 'ستكون كلمة المرور هذه (أو كلمة المرور الرئيسية) مطلوبة للخروج من وضع الكشك إلى الإدارة',
+            publishedVisibleInKiosk: 'منشور (مرئي في وضع الكشك)',
             masterPassword: 'كلمة المرور الرئيسية',
             saveSurvey: 'حفظ الاستبيان',
             deleteSurvey: 'حذف الاستبيان',
             duplicateSurvey: 'نسخ',
+            edit: 'تعديل',
             questions: 'الأسئلة',
             addQuestion: 'إضافة سؤال',
             questionText: 'نص السؤال',
+            enterQuestion: 'أدخل سؤالك',
             required: 'مطلوب',
             optional: 'اختياري',
             options: 'الخيارات',
             addOption: 'إضافة خيار',
-            
+            ratingScale: 'مقياس التقييم',
+            moveUp: 'تحريك لأعلى',
+            moveDown: 'تحريك لأسفل',
+            removeQuestion: 'إزالة السؤال',
+            options: 'الخيارات',
+            addOption: 'إضافة خيار',
+
             // Question Types
             textQuestion: 'نص',
             textareaQuestion: 'نص طويل',
@@ -128,7 +158,7 @@ const LanguageManager = {
             rating: 'تقييم',
             yesNo: 'نعم/لا',
             dateQuestion: 'تاريخ',
-            
+
             // Kiosk Mode
             kioskMode: 'وضع الكشك',
             surveyStation: 'محطة الاستبيان',
@@ -142,25 +172,33 @@ const LanguageManager = {
             seconds: 'ثواني...',
             admin: 'الإدارة',
             restart: 'إعادة البدء',
-            
+
             // Kiosk Settings
             kioskSettings: 'إعدادات وضع الكشك',
             selectKioskSurvey: 'اختر الاستبيان الذي سيعمل في وضع الكشك:',
             setKioskSurvey: 'تعيين كاستبيان الكشك',
             clearSelection: 'مسح الاختيار',
             kioskSetTo: 'تم تعيين وضع الكشك إلى:',
-            
+
             // Analytics
             analytics: 'لوحة التحليلات',
             selectSurveyToView: 'اختر استبياناً لعرض الردود',
             totalResponses: 'إجمالي الردود',
+            firstResponse: 'أول رد',
+            latestResponse: 'آخر رد',
+            completionRate: 'معدل الإكمال',
+            responseCharts: 'رسوم بيانية للردود',
+            individualResponses: 'الردود الفردية',
             viewResponses: 'عرض الردود',
             exportCSV: 'تصدير إلى CSV',
             exportJSON: 'تصدير إلى JSON',
+            clearAllResponses: 'مسح جميع الردود',
             noResponses: 'لا توجد ردود بعد',
             responseDetails: 'تفاصيل الرد',
             submittedAt: 'تم الإرسال في',
-            
+            filter: 'تصفية',
+            clearFilter: 'مسح التصفية',
+
             // Messages
             confirmDelete: 'هل أنت متأكد من حذف هذا الاستبيان؟ سيتم حذف جميع الردود أيضاً.',
             confirmCancel: 'هل أنت متأكد من إعادة تشغيل النموذج؟',
@@ -175,34 +213,34 @@ const LanguageManager = {
             kioskSurveyCleared: 'تم مسح استبيان الكشك بنجاح!',
         }
     },
-    
+
     // Get translation
     t(key) {
         return this.translations[this.currentLang][key] || key;
     },
-    
+
     // Set language and update UI
     setLanguage(lang) {
         this.currentLang = lang;
         localStorage.setItem('appLanguage', lang);
-        
+
         // Update HTML attributes
         document.documentElement.lang = lang;
         document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-        
+
         // Update all elements with data-i18n attribute
         this.updateUI();
-        
+
         // Trigger custom event for components to refresh
         window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
     },
-    
+
     // Update all translatable elements
     updateUI() {
         document.querySelectorAll('[data-i18n]').forEach(element => {
             const key = element.getAttribute('data-i18n');
             const translation = this.t(key);
-            
+
             // Update text or placeholder based on element type
             if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                 if (element.placeholder) {
@@ -212,27 +250,27 @@ const LanguageManager = {
                 element.textContent = translation;
             }
         });
-        
+
         // Update elements with data-i18n-placeholder
         document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
             const key = element.getAttribute('data-i18n-placeholder');
             element.placeholder = this.t(key);
         });
     },
-    
+
     // Initialize language on page load
     init() {
         // Set initial language
         const savedLang = localStorage.getItem('appLanguage') || 'en';
         this.setLanguage(savedLang);
-        
+
         // Update the toggle switch if it exists
         const toggle = document.getElementById('languageToggle');
         if (toggle) {
             toggle.checked = savedLang === 'ar';
         }
     },
-    
+
     // Create language toggle switch HTML
     createToggleHTML() {
         return `

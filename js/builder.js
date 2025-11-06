@@ -11,6 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
     updateKioskSurveyStatus(); // Update kiosk status display
 });
 
+// Reload UI when language changes
+window.addEventListener('languageChanged', () => {
+    loadSurveyList();
+    updateKioskSurveyStatus();
+});
+
 function setupEventListeners() {
     // View switching
     document.getElementById('createSurveyBtn').addEventListener('click', () => {
@@ -39,7 +45,8 @@ function setupEventListeners() {
     // Question type buttons
     document.querySelectorAll('.btn-question').forEach(btn => {
         btn.addEventListener('click', (e) => {
-            const type = e.target.dataset.type;
+            // Use currentTarget instead of target to get the button element, not the clicked child
+            const type = e.currentTarget.dataset.type;
             addQuestion(type);
         });
     });
@@ -70,18 +77,18 @@ function loadSurveyList() {
             <div class="survey-card-header">
                 <h3>${escapeHtml(survey.title)}</h3>
                 <span class="badge ${survey.published ? 'badge-success' : 'badge-secondary'}">
-                    ${survey.published ? 'Published' : 'Draft'}
+                    ${survey.published ? LanguageManager.t('published') : LanguageManager.t('draft')}
                 </span>
             </div>
             <p class="survey-description">${escapeHtml(survey.description || '')}</p>
             <div class="survey-meta">
-                <span>📝 ${survey.questions.length} questions</span>
+                <span>📝 ${survey.questions.length} ${LanguageManager.t('questions')}</span>
                 <span>📅 ${new Date(survey.createdAt).toLocaleDateString()}</span>
             </div>
             <div class="survey-actions">
-                <button class="btn btn-primary" onclick="editSurvey('${survey.id}')">Edit</button>
-                <button class="btn btn-secondary" onclick="duplicateSurvey('${survey.id}')">Duplicate</button>
-                <button class="btn btn-danger" onclick="deleteSurveyFromList('${survey.id}')">Delete</button>
+                <button class="btn btn-primary" onclick="editSurvey('${survey.id}')">${LanguageManager.t('edit')}</button>
+                <button class="btn btn-secondary" onclick="duplicateSurvey('${survey.id}')">${LanguageManager.t('duplicateSurvey')}</button>
+                <button class="btn btn-danger" onclick="deleteSurveyFromList('${survey.id}')">${LanguageManager.t('delete')}</button>
             </div>
         </div>
     `).join('');
@@ -131,24 +138,45 @@ function renderQuestions() {
 
     // Attach event listeners
     attachQuestionListeners();
+
+    // Update translations for dynamically added content
+    if (typeof LanguageManager !== 'undefined') {
+        LanguageManager.updateUI();
+    }
 }
 
 function createQuestionHTML(question, index) {
+    // Helper function to safely escape HTML
+    const escapeHtml = (text) => {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    };
+
+    // Helper function to safely get translations
+    const t = (key, fallback = key) => {
+        if (typeof LanguageManager !== 'undefined' && LanguageManager.t) {
+            const translation = LanguageManager.t(key);
+            return translation || fallback;
+        }
+        return fallback;
+    };
+
     const typeLabels = {
-        text: '📝 Text',
-        textarea: '📄 Long Text',
-        multipleChoice: '☑️ Multiple Choice',
-        checkbox: '✅ Checkboxes',
-        rating: '⭐ Rating',
-        yesNo: '👍 Yes/No',
-        date: '📅 Date'
+        text: `📝 ${t('textQuestion', 'Text')}`,
+        textarea: `📄 ${t('textareaQuestion', 'Long Text')}`,
+        multipleChoice: `☑️ ${t('multipleChoice', 'Multiple Choice')}`,
+        checkbox: `✅ ${t('checkboxes', 'Checkboxes')}`,
+        rating: `⭐ ${t('rating', 'Rating')}`,
+        yesNo: `👍 ${t('yesNo', 'Yes/No')}`,
+        date: `📅 ${t('dateQuestion', 'Date')}`
     };
 
     let optionsHTML = '';
     if (question.type === 'multipleChoice' || question.type === 'checkbox') {
         optionsHTML = `
             <div class="question-options">
-                <label>Options:</label>
+                <label data-i18n="options">Options:</label>
                 ${(question.options || []).map((opt, i) => `
                     <div class="option-item">
                         <input type="text" value="${escapeHtml(opt)}" 
@@ -157,13 +185,13 @@ function createQuestionHTML(question, index) {
                         <button class="btn-icon" onclick="removeOption(${index}, ${i})">✕</button>
                     </div>
                 `).join('')}
-                <button class="btn btn-small" onclick="addOption(${index})">+ Add Option</button>
+                <button class="btn btn-small" onclick="addOption(${index})">+ <span data-i18n="addOption">Add Option</span></button>
             </div>
         `;
     } else if (question.type === 'rating') {
         optionsHTML = `
             <div class="question-options">
-                <label>Rating Scale:</label>
+                <label><span data-i18n="ratingScale">${t('ratingScale', 'Rating Scale')}</span>:</label>
                 <select data-question="${index}" class="rating-scale">
                     <option value="5" ${question.maxRating === 5 ? 'selected' : ''}>1-5</option>
                     <option value="10" ${question.maxRating === 10 ? 'selected' : ''}>1-10</option>
@@ -184,16 +212,16 @@ function createQuestionHTML(question, index) {
             </div>
             <div class="question-body">
                 <div class="form-group">
-                    <label>Question Text *</label>
+                    <label data-i18n="questionText">Question Text *</label>
                     <input type="text" class="question-text" data-question="${index}" 
-                           value="${escapeHtml(question.question)}" placeholder="Enter your question">
+                           value="${escapeHtml(question.question)}" data-i18n-placeholder="enterQuestion" placeholder="Enter your question">
                 </div>
                 ${optionsHTML}
                 <div class="form-group">
                     <label>
                         <input type="checkbox" class="question-required" data-question="${index}" 
                                ${question.required ? 'checked' : ''}>
-                        Required
+                        <span data-i18n="required">Required</span>
                     </label>
                 </div>
             </div>
@@ -473,7 +501,7 @@ function updateKioskSurveyStatus() {
     if (currentKioskSurvey) {
         const survey = StorageManager.getSurveys().find(s => s.id === currentKioskSurvey);
         if (survey) {
-            statusDiv.textContent = `✓ Kiosk mode is set to: "${survey.title}"`;
+            statusDiv.textContent = `✓ ${LanguageManager.t('kioskSetTo')} "${survey.title}"`;
             statusDiv.style.display = 'block';
             statusDiv.style.color = '#1e8449';
         } else {

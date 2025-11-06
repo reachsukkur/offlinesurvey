@@ -333,7 +333,7 @@ function displayResponsesTable(survey) {
 
     // Create table
     let html = '<div class="table-wrapper"><table class="responses-table"><thead><tr>';
-    html += '<th>Submitted At</th>';
+    html += `<th>${LanguageManager.t('submittedAt')}</th>`;
 
     survey.questions.forEach((q, i) => {
         html += `<th>${i + 1}. ${escapeHtml(q.question)}</th>`;

@@ -25,21 +25,27 @@
         <main>
             <div class="analytics-controls">
                 <div class="control-group">
-                    <label for="surveyFilter">Select Survey:</label>
+                    <label for="surveyFilter" data-i18n="selectSurveyToView">Select Survey:</label>
                     <select id="surveyFilter" class="survey-filter">
                         <option value="">-- Select a Survey --</option>
                     </select>
                 </div>
                 <div class="control-group">
-                    <button id="exportCSVBtn" class="btn btn-secondary" disabled>📥 Export CSV</button>
-                    <button id="exportJSONBtn" class="btn btn-secondary" disabled>📥 Export JSON</button>
-                    <button id="clearResponsesBtn" class="btn btn-danger" disabled>🗑️ Clear All Responses</button>
+                    <button id="exportCSVBtn" class="btn btn-secondary" disabled>
+                        📥 <span data-i18n="exportCSV">Export to CSV</span>
+                    </button>
+                    <button id="exportJSONBtn" class="btn btn-secondary" disabled>
+                        📥 <span data-i18n="exportJSON">Export to JSON</span>
+                    </button>
+                    <button id="clearResponsesBtn" class="btn btn-danger" disabled>
+                        🗑️ <span data-i18n="clearAllResponses">Clear All Responses</span>
+                    </button>
                 </div>
             </div>
 
             <div id="analyticsContent">
                 <div class="no-data">
-                    <p>Please select a survey to view analytics</p>
+                    <p data-i18n="selectSurveyToView">Please select a survey to view analytics</p>
                 </div>
             </div>
 
@@ -47,37 +53,41 @@
             <div id="analyticsDisplay" style="display: none;">
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <h3>Total Responses</h3>
+                        <h3 data-i18n="totalResponses">Total Responses</h3>
                         <div class="stat-value" id="totalResponses">0</div>
                     </div>
                     <div class="stat-card">
-                        <h3>First Response</h3>
+                        <h3 data-i18n="firstResponse">First Response</h3>
                         <div class="stat-value" id="firstResponse">-</div>
                     </div>
                     <div class="stat-card">
-                        <h3>Latest Response</h3>
+                        <h3 data-i18n="latestResponse">Latest Response</h3>
                         <div class="stat-value" id="latestResponse">-</div>
                     </div>
                     <div class="stat-card">
-                        <h3>Completion Rate</h3>
+                        <h3 data-i18n="completionRate">Completion Rate</h3>
                         <div class="stat-value" id="completionRate">100%</div>
                     </div>
                 </div>
 
                 <div class="charts-section">
-                    <h2>Response Charts</h2>
+                    <h2 data-i18n="responseCharts">Response Charts</h2>
                     <div id="chartsContainer">
                         <!-- Charts will be dynamically generated here -->
                     </div>
                 </div>
 
                 <div class="responses-section">
-                    <h2>Individual Responses</h2>
+                    <h2 data-i18n="individualResponses">Individual Responses</h2>
                     <div class="response-filters">
                         <input type="date" id="dateFrom" class="date-filter">
                         <input type="date" id="dateTo" class="date-filter">
-                        <button id="filterBtn" class="btn btn-secondary">Filter</button>
-                        <button id="clearFilterBtn" class="btn btn-secondary">Clear Filter</button>
+                        <button id="filterBtn" class="btn btn-secondary">
+                            <span data-i18n="filter">Filter</span>
+                        </button>
+                        <button id="clearFilterBtn" class="btn btn-secondary">
+                            <span data-i18n="clearFilter">Clear Filter</span>
+                        </button>
                     </div>
                     <div id="responsesTable">
                         <!-- Responses table will be displayed here -->

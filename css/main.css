@@ -411,23 +411,33 @@ label {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 5px 10px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 25px;
+    padding: 8px 12px !important;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    border-radius: 30px !important;
+    border: none !important;
     backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    direction: ltr !important;
 }
 
 .lang-label {
     font-size: 14px;
-    font-weight: 600;
-    color: var(--text-primary);
+    font-weight: 700;
+    color: white !important;
     min-width: 25px;
     text-align: center;
+    text-transform: uppercase;
+    opacity: 1 !important;
 }
 
 header .lang-label {
-    color: white;
-    opacity: 0.9;
+    color: white !important;
+    opacity: 1 !important;
+}
+
+header .language-toggle {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    border: none !important;
 }
 
 /* Toggle Switch */
@@ -476,8 +486,9 @@ input:checked + .slider:before {
     transform: translateX(24px);
 }
 
-[dir="rtl"] input:checked + .slider:before {
-    transform: translateX(-24px);
+/* Keep switch in same direction for both LTR and RTL */
+[dir="rtl"] .switch {
+    direction: ltr;
 }
 
 .slider:active:before {
@@ -487,6 +498,7 @@ input:checked + .slider:before {
 /* Language toggle in navigation */
 nav .language-toggle {
     background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 nav .language-toggle:hover {
