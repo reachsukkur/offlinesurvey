@@ -42,6 +42,17 @@ function setupEventListeners() {
     document.getElementById('setKioskSurveyBtn').addEventListener('click', setKioskSurvey);
     document.getElementById('clearKioskSurveyBtn').addEventListener('click', clearKioskSurvey);
 
+    // Import survey
+    document.getElementById('importSurveyBtn').addEventListener('click', () => {
+        document.getElementById('importSurveyInput').click();
+    });
+    
+    document.getElementById('importSurveyInput').addEventListener('change', (e) => {
+        ExportManager.importSurveyJSON(e.target);
+        // Reset the input so the same file can be imported again if needed
+        e.target.value = '';
+    });
+
     // Question type buttons
     document.querySelectorAll('.btn-question').forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -87,6 +98,7 @@ function loadSurveyList() {
             </div>
             <div class="survey-actions">
                 <button class="btn btn-primary" onclick="editSurvey('${survey.id}')">${LanguageManager.t('edit')}</button>
+                <button class="btn btn-secondary" onclick="exportSurveyFromList('${survey.id}')">${LanguageManager.t('exportSurvey')}</button>
                 <button class="btn btn-secondary" onclick="duplicateSurvey('${survey.id}')">${LanguageManager.t('duplicateSurvey')}</button>
                 <button class="btn btn-danger" onclick="deleteSurveyFromList('${survey.id}')">${LanguageManager.t('delete')}</button>
             </div>
@@ -537,4 +549,9 @@ function clearKioskSurvey() {
         updateKioskSurveyStatus();
         alert('Kiosk survey cleared successfully!');
     }
+}
+
+// Export survey from list
+function exportSurveyFromList(surveyId) {
+    ExportManager.exportSurveyJSON(surveyId);
 }

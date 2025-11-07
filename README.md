@@ -15,6 +15,16 @@ Create professional surveys with ease:
 - **Publishing Control**: Publish/unpublish surveys instantly
 - **Password Protection**: Set individual passwords per survey
 - **Duplicate Surveys**: Clone existing surveys for quick setup
+- **Export/Import**: Export surveys to JSON and import them on other devices (NEW!)
+
+### 📤 Export/Import Feature
+Share survey templates across devices:
+- **Export Surveys**: Export survey structure (without responses) to JSON file
+- **Import Surveys**: Import surveys from other devices
+- **Cross-Device Deployment**: Deploy the same survey to multiple kiosks
+- **Survey Backup**: Backup survey designs for safekeeping
+- **Template Sharing**: Share survey templates with team members
+- **Automatic Validation**: Import validation ensures data integrity
 
 ### 🖥️ Kiosk Mode
 Dedicated interface for continuous data collection:
