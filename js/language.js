@@ -107,6 +107,15 @@ const LanguageManager = {
             masterPasswordSet: 'Master password set successfully!',
             kioskSurveySet: 'Kiosk survey set successfully! The kiosk mode will now use this survey.',
             kioskSurveyCleared: 'Kiosk survey cleared successfully!',
+
+            // Main Menu (app.html)
+            surveyApp: 'Survey App',
+            selectMode: 'Select a mode to continue',
+            builderDesc: 'Create and manage surveys',
+            kioskDesc: 'Public survey collection',
+            analyticsDesc: 'View responses and reports',
+            offlineCapable: 'Offline Capable',
+            sharedStorage: 'Shared Storage',
         },
 
         ar: {
@@ -215,6 +224,15 @@ const LanguageManager = {
             masterPasswordSet: 'تم تعيين كلمة المرور الرئيسية بنجاح!',
             kioskSurveySet: 'تم تعيين استبيان الكشك بنجاح! سيستخدم وضع الكشك هذا الاستبيان الآن.',
             kioskSurveyCleared: 'تم مسح استبيان الكشك بنجاح!',
+
+            // Main Menu (app.html)
+            surveyApp: 'تطبيق الاستبيان',
+            selectMode: 'اختر وضعاً للمتابعة',
+            builderDesc: 'إنشاء وإدارة الاستبيانات',
+            kioskDesc: 'جمع الاستبيانات العامة',
+            analyticsDesc: 'عرض الردود والتقارير',
+            offlineCapable: 'يعمل بدون إنترنت',
+            sharedStorage: 'تخزين مشترك',
         }
     },
 

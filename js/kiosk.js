@@ -152,14 +152,22 @@ function renderQuestion(question, index) {
 
         case 'rating':
             const maxRating = question.maxRating || 5;
+            // Define smiley faces for different rating scales
+            const smileys5 = ['😞', '😕', '😐', '🙂', '😄']; // 1-5 scale
+            const smileys10 = ['😡', '😠', '😞', '😕', '😐', '🙂', '😊', '😄', '😁', '🤩']; // 1-10 scale
+            const smileySet = maxRating === 10 ? smileys10 : smileys5;
+            
             inputHTML = `
                 <div class="rating-group">
-                    ${Array.from({ length: maxRating }, (_, i) => i + 1).map(num => `
-                        <label class="rating-label">
+                    ${Array.from({ length: maxRating }, (_, i) => i + 1).map(num => {
+                        const emoji = smileySet[num - 1] || num;
+                        return `
+                        <label class="rating-label" data-value="${num}">
                             <input type="radio" name="q_${question.id}" value="${num}" ${question.required ? 'required' : ''}>
-                            <span class="rating-number">${num}</span>
+                            <span class="rating-number">${emoji}</span>
                         </label>
-                    `).join('')}
+                    `;
+                    }).join('')}
                 </div>
             `;
             break;

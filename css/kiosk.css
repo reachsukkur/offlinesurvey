@@ -217,9 +217,10 @@
     background: var(--bg-color);
     border: 3px solid var(--border-color);
     border-radius: 12px;
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 32px;
+    font-weight: 400;
     transition: all 0.3s ease;
+    line-height: 1;
 }
 
 .rating-label:hover .rating-number {
